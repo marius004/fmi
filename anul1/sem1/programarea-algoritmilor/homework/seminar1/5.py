@@ -1,5 +1,4 @@
-x = int(input("x = "))
-y = int(input("y = "))
+from math import *  
 
 def countPositiveBits(nr: int) -> int:
     bits = 0
@@ -10,5 +9,8 @@ def countPositiveBits(nr: int) -> int:
     
     return bits 
 
-x_xor_y = x ^ y
-print(f"Solution: {countPositiveBits(x_xor_y)}")
+x = int(input("x = "))
+k = int(log2(x)) + 1
+mask = (1 << k) - 1
+
+print(f"Negative bits: {countPositiveBits(x ^ mask)}")
