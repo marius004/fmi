@@ -13,4 +13,6 @@ i r
 disass
 stepi 
 stepi 7  
+
+print (long*)(x)
 ```
