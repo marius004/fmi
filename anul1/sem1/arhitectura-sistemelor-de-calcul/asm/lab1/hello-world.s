@@ -1,10 +1,10 @@
 .data
-  helloWorld: .asciz "Hello, world!\n"
+  helloWorld: .asciz "Hello World\n"
 .text
 .globl main
 main:
-  mov $4,  %eax 
-  mov $1,  %ebx 
+  mov $4, %eax 
+  mov $1, %ebx 
   mov $helloWorld, %ecx 
   mov $15, %edx 
   int $0x80 

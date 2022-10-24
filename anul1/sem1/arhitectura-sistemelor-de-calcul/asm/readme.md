@@ -1,16 +1,16 @@
 ## https://cs.unibuc.ro/~crusu/asc/labs.html
 
-## compile and run:
-```
-gcc -m32 program.asm -o program
-./program
-
-sh run-asm.sh {asm_file}
-./program
-```
-
 ## useful links: 
 - https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md#x86-32_bit 
+- https://github.com/opennetworklinux/linux-3.8.13/blob/master/arch/sh/include/uapi/asm/unistd_32.h
+- https://gist.github.com/mishurov/6bcf04df329973c15044
 
-## lab pdfs:
-- https://cs.unibuc.ro/~crusu/asc/Arhitectura%20Sistemelor%20de%20Calcul%20(ASC)%20-%20Laborator%20Partea%200x00.pdf
+## gdb:
+```
+gdb output.o
+b main 
+i r 
+disass
+stepi 
+stepi 7  
+```
