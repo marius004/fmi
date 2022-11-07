@@ -1,6 +1,6 @@
 rev([], []).
-rev([H|T], M) :- rev(T, U), append(U, [H], M). 
-palindrome(L) :- rev(L, L).
+rev([H|T], M) :- rev(T, V), append(V, [H], M).
+palindrome(L) :- rev(L, R), R = L.
 
 remove_duplicates([], []).
 remove_duplicates([H|T], U) :- remove_duplicates(T, U), member(H, U).
@@ -12,7 +12,6 @@ atimes(N, [H|T], Y) :- atimes(N, T, Y), N \== H.
 
 insertsort([],[]).
 insertsort([H|T],L) :- insertsort(T,L1), insert(H,L1,L).
-
 
 insert(X, [], [X]).
 insert(X, [H|T], [X|[H|T]]) :- X =< H.

@@ -31,12 +31,16 @@ fibg(N, X, P) :- A is N - 1, fibg(A, P, Z), X is P + Z.
 
 # cum calculam lungimea unei liste
 lg([], 0).
-lg([_|T]) :- lg(T, Y), X is Y + 1
+lg([_|T], X) :- lg(T, Y), X is Y + 1
 
 line(0, _) :- nl.
-line(X, C) :- X >= 1, write(C), X1 is X - 1, line(X1, C).
+line(X, C) :- X > 0, write(C), X1 is X - 1, line(X1, C).
 
-element_of(X,[X| ]).
+rectangle(0, _, _) :- nl.
+rectangle(N, M, C) :- N > 0, line(M, C), K is N - 1, rectangle(K, M, C).
+square(N, C):- rectangle(N, N, C).
+
+element_of(X,[X|_]).
 element_of(X, [_|Tail]) :- element_of(X, Tail).
 
 concat_lists([], List, List).
