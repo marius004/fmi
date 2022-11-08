@@ -1,1 +1,1 @@
-gcc -m32 $1 -o output.o && ./output.o
+gcc -m32 main.s -o output.o && ./output.o

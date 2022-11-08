@@ -18,8 +18,9 @@ isNumberPrimeLoop:
   cmp n, %ecx 
   je numberIsPrime
 
+   
   ;// daca restul e 0 atunci numarul nu e prim 
-  mov $0, %edx 
+  mov $0, %edx  
   mov n, %eax 
   div %ecx 
   cmp $0, %edx 
