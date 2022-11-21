@@ -14,5 +14,6 @@ disass
 stepi 
 stepi 7  
 
-print (long*)(x)
+print (long)(x)
+c
 ```
