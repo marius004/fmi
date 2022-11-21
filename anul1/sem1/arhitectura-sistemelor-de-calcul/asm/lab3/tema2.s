@@ -1,4 +1,4 @@
-; DOES NOT WORK
+; DOES NOT WORK :(
 .data
   s: .asciz "Assembly"
   t: .space 9
@@ -34,6 +34,12 @@ etloop:
   jmp etloop
 
 print: 
+  mov n, %eax
+  mov (%esi, %eax, 1), %edx 
+  mov %edx, (%edi, %eax, 1)  
+
+  inc %eax 
+  mov %eax, n
   mov $4, %eax
   mov $1, %ebx
   mov $t, %ecx
