@@ -26,9 +26,7 @@ etloop:
 etexit:
   mov len, %eax
   add $2, %eax 
-  movl %eax, len
-
-  movl 
+  movl %eax, len 
 
   mov $4, %eax
   mov $1, %ebx
