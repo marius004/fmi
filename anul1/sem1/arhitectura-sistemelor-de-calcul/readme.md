@@ -1,3 +1,7 @@
+![image](https://user-images.githubusercontent.com/43640455/203275447-5e7b99ba-d5cd-4e4e-8e41-5f8c70ca3147.png)
+![image](https://user-images.githubusercontent.com/43640455/203275596-5f36398c-6b96-40e4-9fc7-d8ce74c7b56b.png)
+
+
 ## https://cs.unibuc.ro/~crusu/asc/labs.html
 
 ## useful links: 
