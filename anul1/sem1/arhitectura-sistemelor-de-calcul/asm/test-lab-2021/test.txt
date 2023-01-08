@@ -1,0 +1,67 @@
+0x00
+  Subiectul 1: 
+    vezi 0x01.s 
+
+  Subiectul 2:
+    Registrul %esp primeste o adresa de memorie dintr-o zona
+    de adrese mici, in care programul nu are drepturi.
+    Cand se incearca "puhsl %eax", se incearca o completare
+    de valoae la adresa nepermisa de memorie si este aruncat 
+    segmentation fault.
+
+  Subiectul 3: 
+    • avem adresa initiala 0xffff2022;
+    • adresa minima pana la care avem drepturi: 0xffdf8d3a;
+    • calculam diferenta lor, iar rezultatul in baza 10 este 2069224; 
+      acesta reprezinta numarul de bytes disponibili pentru stiva;
+    • pentru cadrul local de apel din procedura avem cel putin urmatoarea stiva: 
+        x 
+        return address
+        old ebp 
+        esi 
+        edi 
+        ebx 
+      
+      deci ocupa un minim de 24 bytes 
+    
+    • daca isi face un autoapel, dimensiunea stivei se dubleaza - initial era 24 bytes minim, 
+      acum are 48 minim. 
+    • inseamna ca pentru X autoapeluri aem minim 24(X + 1) bytes ocupati 
+    • consideram 24(X + 1) = 2069224, de unde X + 1 = 86217, rest 16
+      si putem alege X = 86217 
+    • deci, pentru a produce segmentation fault, trebuie sa avem minim 86217 autoapeluri
+    • un input bun este 2^86217. Se poate reduce acest input, considerand ca provine 
+      dintr-un Y care s0a aplicat un 3*Y + 1 etc. 
+0x01
+  Subiectul 4:
+    addl $4, %edi(for_main)
+    pushl %edi & popl %edi(f)
+    pushl %ecx & popl %ecx(main)
+    jle final in loc de jae
+    popl %ebp 
+  Subiectul 5:
+    0 
+    4 
+    3 
+    0 
+    2 
+    0 
+    1
+  Subiectul 6:
+    long f(long x) {
+      switch(x) {
+        case 0: return 1;
+        case 1: return 2;
+        case 2: return 3;
+        case 3: return 4;
+        default: return 0;
+      }
+    }
+0x02:
+  Subiectul 7:
+    NU, doarece se intampla un overflow si se va ajunge
+    la o valoare negativa in cadrul loop ului 
+  Subiectul 8:
+    a) 2 argumente [mov 0x8(%ebp), %eax ; mov 0xc(%ebp), %eax]
+    b) 
+  
