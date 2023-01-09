@@ -1,0 +1,45 @@
+1)
+cele doua scrieri sunt echivalente, 
+deoarece operatorul [] in C inseamna 
+*(v + i) pentru v[i]
+*(i + v) pentru i[v]
+
+si datorita comutativitatii adunarii 
+cele doua sunt echivalente
+
+// scrierea pentru v[i] si i[v] (conform godbolt)
+lea v, %esi 
+movl i, %ecx 
+movl (%esi, %ecx, 4), %eax
+
+2) 
+%esp = 0xffffd05c
+
+popl %ebx 
+------------------
+movl (%esp), %ebx 
+addl $4, %esp 
+
+deci valoarea lui esp este 0xffffd05c + 0x4 = 0xffffd060
+
+* generare stack overflow 
+f: 
+  pushl %eax 
+  call f 
+....
+main: 
+  call f 
+3)
+  movl %eax, eticheta 
+
+  O eticheta este doar o adresa de memorie,
+  deci nu putem sa schimbam adresa de memorie 
+  a unei etichete
+4) 
+
+(00000000 00000000 00000000 00001010) = 10
+(00000000 00000000 00000000 00010100) = 20
+(00000000 00000000 00000000 00011110) = 30
+
+ebx = (00000000 00001010 00000000 00000000)
+raspuns = 2^17+2^19
