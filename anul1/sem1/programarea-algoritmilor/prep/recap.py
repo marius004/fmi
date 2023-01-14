@@ -51,7 +51,7 @@ def ex4(s1, s2):
 # print(ex4("xcdbfffghduiiiisdas", "ghxcdbduiiiisddgs"))
 
 def ex5(propozitie: str):
-  for c in ".!?": 
+  for c in "!?": 
     propozitie = propozitie.replace(c, ".")
 
   l = propozitie.split(".")
