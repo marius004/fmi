@@ -13,8 +13,9 @@ f:
   cmp $1, %eax
   je base_case1
 
+  movl $2,%ebx
   xorl %edx, %edx 
-  divl $2 
+  divl %ebx
   cmp $0, %edx 
   je base_case2
 
@@ -62,6 +63,16 @@ f:
 
 .globl main 
 main: 
+before:
+  movl $1, %eax
+  movl $2, %ebx
+  movl $3, %ecx
+  movl $4, %edx
+
+after:
+  pushl $0
+  call fflush 
+  popl %ebx 
 exit: 
   movl $1, %eax 
   xorl %ebx, %ebx 
