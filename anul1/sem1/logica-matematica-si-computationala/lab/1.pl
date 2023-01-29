@@ -25,4 +25,5 @@ grandfather_of(Grandfather, Child) :- parent(Parent, Child), father_of(Grandfath
 sister_of(Sister, Person) :- female(Sister), parent(Parent, Sister), parent(Parent, Person), Sister \== Person.
 brother_of(Brother, Person) :- male(Brother), parent(Parent, Brother), parent(Parent, Person), Brother \== Person.
 aunt_of(Aunt, Person) :- parent(Parent, Person), sister_of(Aunt, Person),  Aunt \== Parent.
-uncle_of(Uncle, Person) :- parent(Parent, Person), brother_of(Uncle, Person), Uncle \== Parent.
+uncle_of(Uncle, Person) :- parent(Parent, Person), brother_of(Uncle, Person), Uncle \== Parent.  
+cousin_of(Cousin, Person) :- parent(Parent, Person), parent(Parent2, Cousin), sister_of(Parent, Parent2), Cousin \== Person.                

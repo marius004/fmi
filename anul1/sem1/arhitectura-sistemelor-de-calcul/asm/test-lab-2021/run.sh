@@ -1,0 +1,1 @@
+gcc -m32 $1 -o output.o -no-pie && ./output.o

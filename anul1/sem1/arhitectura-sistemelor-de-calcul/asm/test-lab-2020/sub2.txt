@@ -1,0 +1,36 @@
+1)
+* inlocuim movl %ecx, 8(%ebp) cu movl 8(%ebp), %ecx 
+* inlocuim movl %eax, 12(%ebp) cu movl 12(%ebp), %eax
+* inlocuim al doilea popl %ebx din f_for cu popl %ecx
+* in f trebuia sa push si la %ebx care e modificat de f 
+  si ulterior sa i dam popl %ebx la final(calle-saved register)
+* inainte de divl punem xorl %edx, %edx(i.e asignam 0 la edx)
+  ca sa se imparta (2^32 * edx + eax) la %ecx  
+* inainte de call fflush din procedura f dam pushl %ecx 
+si ii dam popl %ecx dupa apelul fflush pentru ca ecx sa 
+nu si modifice valoarea 
+2)
+* pushl %ebx popl %ebx ca sa se respecte in totalitate cadrul de apel 
+* fflush ul din procedura f nu este necesar, deoarece dam fflush 
+  si in main 
+* inainte de divl punem xorl %edx, %edx(i.e asignam 0 la edx)
+  ca sa se imparta 2^32 * 0 + eax la %ecx  
+* pushl %ecx inainte de fflush
+3)
+4 3 2 1 25
+4)
+In ziua de azi printarea este destul de costisitoare,
+functiile de printare pentru a nu face un syscall pentru 
+fiecare printare a unui caracter in parte tin informatia 
+intr-un buffer de o anumita dimensiune(4096 bytes de exemplu).
+cand buffer-ul se umple se printeaza la stdout(respectiv fisier) 
+si bufferul se goleste. Deci, fflush forteaza ca ceea ce se 
+afla in buffer si nu a fost printat sa fie printat. Fara fflush
+probabil nu s-ar fi afisat nimic pe ecran.
+
+dam pushl %eax deoarece eax este un registru caller-saved
+si nu stim 100% daca dupa ce apelam printf sau fflush ca 
+valoarea acestuia o sa ramana aceasi.
+Cu ajutorul popl %eax scoatem valoarea din varful stivei
+si o assignam lui eax care probabil a fost modificat de 
+cele doua proceduri apelate(printf, fflush)
